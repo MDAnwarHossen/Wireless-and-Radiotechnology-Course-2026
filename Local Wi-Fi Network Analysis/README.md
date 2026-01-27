@@ -5,6 +5,9 @@ This repository documents a technical analysis of the current Wi‑Fi environmen
 ---
 
 ## 1. Technical Parameter Exploration
+![Alt Text](screenshots/image1.jpeg)
+![Alt Text](screenshots/image2.jpeg)
+![Alt Text](screenshots/image3.jpeg)
 
 Based on the provided screenshots, the following represents the current state of the Wi‑Fi network.
 
