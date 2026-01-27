@@ -25,18 +25,6 @@ This repository documents the collection, analysis, and interpretation of Blueto
 
 The relationship between RSSI and distance is **logarithmic**, not linear. Signal strength drops rapidly at close range and then gradually tapers off as distance increases.
 
-A commonly used model is the **Log-Distance Path Loss Model**:
-
-\[
-d = 10^{\frac{A - RSSI}{10n}}
-\]
-
-Where:
-- **A** = RSSI measured at 1 meter (calibration constant)
-- **n** = Path loss exponent  
-  - ~2 for free space  
-  - ~3–4 for indoor environments
-- **d** = Estimated distance in meters
 
 ### Environmental Factors
 
@@ -84,3 +72,4 @@ RSSI should therefore be used as a **relative indicator**, not an absolute measu
 
 ---
 
+ 
