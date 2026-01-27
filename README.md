@@ -33,10 +33,12 @@ Screenshots were taken at each test location to record radio parameters such as 
 
 Measurements were performed under the following conditions:
 
-1. Indoors – near a window  
-2. Indoors – center of the building  
-3. Outdoors – near the building  
-4. Switching between LTE and 5G NSA where available  
+1. Indoors – near a window 
+![Alt Text](screenshots/Indoors%20–%20near%20a%20window.jpeg)
+2. Indoors – center of the building 
+![Alt Text](screenshots/Indoors%20–%20center%20of%20the%20building.jpeg)
+3. Outdoors – near the building 
+![Alt Text](screenshots/Outdoors%20–%20near%20the%20building.jpeg) 
 
 The device remained stationary during measurements to ensure consistency.
 
