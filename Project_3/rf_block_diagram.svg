@@ -1,0 +1,113 @@
+<svg width="680" viewBox="0 0 680 745" xmlns="http://www.w3.org/2000/svg" role="img" font-family="Arial, Helvetica, sans-serif">
+<title>Nordic nRF52840 — RF System Block Diagram</title>
+<desc>Signal chain from MCU through 2.4 GHz radio, PA, LNA, TX/RX switch, on-chip balun (all on-chip), then external LC matching network and antenna for the nRF52840 BLE SoC.</desc>
+
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<!-- Background -->
+<rect width="680" height="745" fill="#fafaf9"/>
+
+<!-- ── SoC dashed boundary ── -->
+<rect x="90" y="35" width="440" height="480" rx="14" fill="none" stroke="#aaa9a2" stroke-width="1" stroke-dasharray="6 4"/>
+<text x="108" y="52" font-size="11" fill="#888780">nRF52840 SoC — on-chip</text>
+
+<!-- ── 1. MCU ── -->
+<rect x="215" y="55" width="250" height="65" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.75"/>
+<text x="340" y="80" font-size="14" font-weight="bold" fill="#0C447C" text-anchor="middle">MCU</text>
+<text x="340" y="100" font-size="11" fill="#185FA5" text-anchor="middle">ARM Cortex-M4F · 64 MHz · 1 MB flash</text>
+
+<!-- MCU ↔ Baseband -->
+<line x1="340" y1="120" x2="340" y2="153" stroke="#888" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+
+<!-- ── 2. Baseband / RADIO ── -->
+<rect x="215" y="155" width="250" height="65" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="0.75"/>
+<text x="340" y="180" font-size="14" font-weight="bold" fill="#3C3489" text-anchor="middle">2.4 GHz radio peripheral</text>
+<text x="340" y="200" font-size="11" fill="#534AB7" text-anchor="middle">GFSK / OQPSK · CRC · RSSI · EasyDMA</text>
+
+<!-- Split paths: Baseband → PA and LNA -->
+<path d="M340 220 L340 243 L250 243 L250 260" fill="none" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M340 220 L340 243 L430 243 L430 260" fill="none" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<!-- TX / RX path labels -->
+<text x="152" y="283" font-size="11" fill="#993C1D" text-anchor="middle">Tx ↓</text>
+<text x="528" y="283" font-size="11" fill="#085041" text-anchor="middle">↑ Rx</text>
+
+<!-- ── 3a. PA ── -->
+<rect x="185" y="260" width="130" height="56" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="0.75"/>
+<text x="250" y="282" font-size="14" font-weight="bold" fill="#712B13" text-anchor="middle">PA</text>
+<text x="250" y="301" font-size="11" fill="#993C1D" text-anchor="middle">Tx · max +8 dBm</text>
+
+<!-- ── 3b. LNA ── -->
+<rect x="365" y="260" width="130" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.75"/>
+<text x="430" y="282" font-size="14" font-weight="bold" fill="#085041" text-anchor="middle">LNA</text>
+<text x="430" y="301" font-size="11" fill="#0F6E56" text-anchor="middle">Rx · −95 dBm sens.</text>
+
+<!-- Join paths: PA and LNA → RF Switch -->
+<path d="M250 316 L250 338 L304 338 L304 362" fill="none" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+<path d="M430 316 L430 338 L376 338 L376 362" fill="none" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+<!-- ── 4. TX/RX Switch ── -->
+<rect x="215" y="362" width="250" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.75"/>
+<text x="340" y="384" font-size="14" font-weight="bold" fill="#444441" text-anchor="middle">TX / RX switch</text>
+<text x="340" y="403" font-size="11" fill="#5F5E5A" text-anchor="middle">Auto Tx / Rx path selection</text>
+
+<!-- RF Switch ↔ Balun -->
+<line x1="340" y1="418" x2="340" y2="450" stroke="#888" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+
+<!-- ── 5. On-chip Balun ── -->
+<rect x="215" y="452" width="250" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.75"/>
+<text x="340" y="474" font-size="14" font-weight="bold" fill="#444441" text-anchor="middle">On-chip balun + RF filter</text>
+<text x="340" y="493" font-size="11" fill="#5F5E5A" text-anchor="middle">Differential → single-ended · 50 Ω</text>
+
+<!-- Chip boundary annotation -->
+<text x="108" y="514" font-size="11" fill="#888780">Chip boundary</text>
+<text x="108" y="530" font-size="11" fill="#888780">PCB ↓</text>
+
+<!-- Balun → Matching (dashed = crosses chip boundary) -->
+<line x1="340" y1="508" x2="340" y2="538" stroke="#888" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#arr)"/>
+
+<!-- ── 6. LC Matching Network (external) ── -->
+<rect x="215" y="540" width="250" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.75"/>
+<text x="340" y="562" font-size="14" font-weight="bold" fill="#444441" text-anchor="middle">LC matching network</text>
+<text x="340" y="581" font-size="11" fill="#5F5E5A" text-anchor="middle">50 Ω impedance · PCB-level</text>
+
+<!-- Matching ↔ Antenna -->
+<line x1="340" y1="596" x2="340" y2="626" stroke="#888" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+
+<!-- ── 7. Antenna ── -->
+<rect x="265" y="628" width="150" height="55" rx="8" fill="#EAF3DE" stroke="#3B6D11" stroke-width="0.75"/>
+<text x="340" y="649" font-size="14" font-weight="bold" fill="#27500A" text-anchor="middle">Antenna</text>
+<text x="340" y="668" font-size="11" fill="#3B6D11" text-anchor="middle">PCB trace / chip</text>
+
+<!-- Radio wave indicator -->
+<path d="M308 688 Q324 700 340 688 Q356 700 372 688" fill="none" stroke="#888" stroke-width="1" opacity="0.55"/>
+<path d="M294 696 Q317 712 340 696 Q363 712 386 696" fill="none" stroke="#888" stroke-width="1" opacity="0.38"/>
+<path d="M280 705 Q310 724 340 705 Q370 724 400 705" fill="none" stroke="#888" stroke-width="1" opacity="0.22"/>
+
+<text x="340" y="728" font-size="11" fill="#5F5E5A" text-anchor="middle">2.4 GHz ISM band · BLE 5 / 802.15.4 / proprietary</text>
+
+<!-- ── Power Supply ── -->
+<rect x="560" y="62" width="110" height="85" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.75"/>
+<text x="615" y="87" font-size="13" font-weight="bold" fill="#633806" text-anchor="middle">Power supply</text>
+<text x="615" y="107" font-size="11" fill="#854F0B" text-anchor="middle">DCDC + LDO</text>
+<text x="615" y="127" font-size="11" fill="#854F0B" text-anchor="middle">1.7–3.6 V VDD</text>
+<!-- Power supply arrow → SoC boundary -->
+<path d="M560 107 L532 107" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#arr)" opacity="0.7"/>
+
+<!-- Diagram title -->
+<text x="340" y="18" font-size="13" font-weight="bold" fill="#2C2C2A" text-anchor="middle">Nordic nRF52840 — RF System Block Diagram</text>
+
+<!-- Legend -->
+<rect x="90" y="628" width="115" height="90" rx="8" fill="none" stroke="#aaa9a2" stroke-width="0.75"/>
+<text x="148" y="645" font-size="11" font-weight="bold" fill="#444441" text-anchor="middle">Legend</text>
+<rect x="100" y="652" width="12" height="12" rx="3" fill="#FAECE7" stroke="#993C1D" stroke-width="0.75"/>
+<text x="118" y="663" font-size="11" fill="#444441">Tx path</text>
+<rect x="100" y="670" width="12" height="12" rx="3" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.75"/>
+<text x="118" y="681" font-size="11" fill="#444441">Rx path</text>
+<rect x="100" y="688" width="12" height="12" rx="3" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.75"/>
+<text x="118" y="699" font-size="11" fill="#444441">Structural</text>
+</svg>
