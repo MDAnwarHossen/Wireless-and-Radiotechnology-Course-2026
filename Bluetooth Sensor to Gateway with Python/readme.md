@@ -25,11 +25,10 @@ Temperature: 21.9 C
 
 Replace this with your real Bluetooth MAC address:
 
-XX:XX:XX:XX:XX:XX
-
-Example:
-
 B8:27:EB:45:12:34
+
+
+
 
 ---
 
@@ -73,15 +72,11 @@ Open both files:
 Replace:
 
 ```python
-("XX:XX:XX:XX:XX:XX", 4)
+("B8:27:EB:45:12:34", 4)
 ```
 
 with your actual Bluetooth MAC address.
 
-Example:
-
-```python
-("B8:27:EB:45:12:34", 4)
 ```
 
 ---
@@ -106,15 +101,6 @@ python client.py
 
 ---
 
-## Screenshot of Successful Communication
-
-(Add your screenshot here)
-
-Example:
-
-![Bluetooth Communication Screenshot](screenshot.png)
-
----
 
 ## Reflection
 
